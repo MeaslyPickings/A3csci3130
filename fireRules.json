@@ -1,16 +1,15 @@
 {
   "rules": {
-    ".read": "true",
-    ".write": "true",
-    "contacts": {
-            "$contact": {
-                "name": {
-                    ".validate": "newData.isString() && newData.val().length < 50"
-                },
-                "email": {
-                    ".validate": "newData.isString() && newData.val().matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$/i)"
-                }
-            }
+    ".read": true,
+    ".write": true,
+      "businesses": {
+        "$business": {
+      		"number": {".validate": "newData.exists() && newData.val().length == 9"},
+        	"name": {".validate": "newData.exists() && newData.val().length > 2 && newData.val().length < 48"},
+        	"type": {".validate": "newData.exists() && (newData.val().beginsWith('Fisher') || newData.val().beginsWith('Distributor') || newData.val().beginsWith('Processor') || newData.val().beginsWith('Fish Monger'))"},
+        	"address": {".validate": "newData.val().length < 50"},
+        	"provTer": {".validate": "newData.val().beginsWith('AB') || newData.val().beginsWith('BC') || newData.val().beginsWith('MB') || newData.val().beginsWith('NB') || newData.val().beginsWith('NL') || newData.val().beginsWith('NS') || newData.val().beginsWith('NT') || newData.val().beginsWith('NU') || newData.val().beginsWith('ON') || newData.val().beginsWith('PE') || newData.val().beginsWith('QC') || newData.val().beginsWith('SK') || newData.val().beginsWith('YT')"}
         }
-  }
+      }
+    }
 }
